@@ -32,8 +32,9 @@ function success(position) {
     markerWolfB.bindPopup("WolfB " + distancePlayerWolfB + " m and " + distanceWolfBPrey + " m to Prey", {closeOnClick: false, autoClose: false}).openPopup();
 
     //presenteer de marker van de prey wanneer de speler < 20m afstand is
-    if (distancePlayerPrey <= 20) { //nog uittesten
+    if (distancePlayerPrey <= 20) {
         markerPrey.addTo(map);
+        markerPrey.bindPopup("You have found the Prey", {closeOnClick: false, autoClose: false}).openPopup();
     }
 
 }
@@ -78,13 +79,13 @@ var wolfIcon = L.icon({
 });
 
 // plaats testspelers (wolves) op de kaart
-var markerWolfA = L.marker([52.524494, 4.642213], {icon: wolfIcon}).addTo(map);
+var markerWolfA = L.marker([52.519746, 4.683202], {icon: wolfIcon}).addTo(map);
 
-var markerWolfB = L.marker([52.529011, 4.641999], {icon: wolfIcon}).addTo(map);
+var markerWolfB = L.marker([52.518275, 4.685414], {icon: wolfIcon}).addTo(map);
 
 // stel coordinaten in voor de statische 'Prey'
-var markerPrey = L.marker([52.526547, 4.633037]);
+var markerPrey = L.marker([52.516446, 4.686901]);
 
 //volg geolocatie
-navigator.geolocation.getCurrentPosition(success, error, options);
+navigator.geolocation.watchPosition(success, error, options);
 
