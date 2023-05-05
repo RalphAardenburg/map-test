@@ -1,3 +1,6 @@
+// declare markerPlayer as a global variable
+var markerPlayer;
+
 // functie voor wanneer coordinaten succesvol worden opgehaald
 function success(position) {
     const latitude = position.coords.latitude;
@@ -8,7 +11,7 @@ function success(position) {
     if (markerPlayer) {
         map_init.removeLayer(markerPlayer)
     }
-    var markerPlayer = L.marker([latitude, longitude]).addTo(map);
+    markerPlayer = L.marker([latitude, longitude]).addTo(map);
     
     //bereken de afstand tot de medespelers
     let distancePlayerWolfA = Math.round(map.distance(markerPlayer.getLatLng(), markerWolfA.getLatLng()));
@@ -75,12 +78,12 @@ var wolfIcon = L.icon({
 });
 
 // plaats testspelers (wolves) op de kaart
-var markerWolfA = L.marker([52.516391, 4.676774], {icon: wolfIcon}).addTo(map);
+var markerWolfA = L.marker([52.524494, 4.642213], {icon: wolfIcon}).addTo(map);
 
-var markerWolfB = L.marker([52.519263, 4.679279], {icon: wolfIcon}).addTo(map);
+var markerWolfB = L.marker([52.529011, 4.641999], {icon: wolfIcon}).addTo(map);
 
 // stel coordinaten in voor de statische 'Prey'
-var markerPrey = L.marker([52.518071, 4.672016]);
+var markerPrey = L.marker([52.526547, 4.633037]);
 
 //volg geolocatie
 navigator.geolocation.getCurrentPosition(success, error, options);
