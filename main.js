@@ -35,13 +35,13 @@ function success(position) {
     markerPlayer.bindPopup(distancePlayerPrey + " m to Prey", {closeOnClick: false, autoClose: false}).openPopup();
 
     //geef de medespelers tekstballonnen met info mbt afstand tot de speler en de Prey
-    markerWolfA.bindPopup("WolfA " + distancePlayerWolfA + " m and " + distanceWolfAPrey + " m to Prey", {closeOnClick: false, autoClose: false}).openPopup();
-    markerWolfB.bindPopup("WolfB " + distancePlayerWolfB + " m and " + distanceWolfBPrey + " m to Prey", {closeOnClick: false, autoClose: false}).openPopup();
+    markerWolfA.bindPopup("WolfA " + distancePlayerWolfA + " m and " + distanceWolfAPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
+    markerWolfB.bindPopup("WolfB " + distancePlayerWolfB + " m and " + distanceWolfBPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
 
     //presenteer de marker van de prey wanneer de speler < 20m afstand is
     if (distancePlayerPrey <= 20) {
         markerPrey.addTo(map);
-        markerPrey.bindPopup("You have found the Prey", {closeOnClick: false, autoClose: false}).openPopup();
+        markerPrey.bindPopup("You have found the Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
     }
     //alleen voor testen
     //console.log(distancePlayerPrey, distancePlayerWolfA, distancePlayerWolfB)
