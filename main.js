@@ -1,20 +1,25 @@
-// declare markerPlayer as a global variable
-var markerPlayer;
-
 // functie voor wanneer coordinaten succesvol worden opgehaald
 function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     //const accuracy = position.coords.accuracy;
-    
-    console.log(latitude)
 
     //verwijder de marker indien deze al bestaat en plaats een marker voor de huidige positie
     if (markerPlayer) {
         map.removeLayer(markerPlayer)
     }
-    markerPlayer = L.marker([latitude, longitude]).addTo(map);
+    if (markerWolfA) {
+        map.removeLayer(markerWolfA)
+    }
+    if (markerWolfB) {
+        map.removeLayer(markerWolfB)
+    }
     
+    //plaats de markers op de kaart
+    markerPlayer = L.marker([latitude, longitude]).addTo(map);
+    markerWolfA.addTo(map);
+    markerWolfB.addTo(map);
+
     //bereken de afstand tot de medespelers
     let distancePlayerWolfA = Math.round(map.distance(markerPlayer.getLatLng(), markerWolfA.getLatLng()));
     let distancePlayerWolfB = Math.round(map.distance(markerPlayer.getLatLng(), markerWolfB.getLatLng()));
@@ -38,7 +43,8 @@ function success(position) {
         markerPrey.addTo(map);
         markerPrey.bindPopup("You have found the Prey", {closeOnClick: false, autoClose: false}).openPopup();
     }
-
+    //alleen voor testen
+    //console.log(distancePlayerPrey, distancePlayerWolfA, distancePlayerWolfB)
 }
 
 // functie voor wanneer coordinaten niet kunnen worden opgehaald
@@ -49,8 +55,8 @@ function error() {
 // opties voor ophalen locatie
 const options = {
     enableHighAccuracy: true,
-    maximumAge: 1000,
-    timeout: 5000,
+    maximumAge: 2000,
+    timeout: 10000,
 };
 
 // initialize the map and set its view to our chosen geographical coordinates and a zoom level:
@@ -80,9 +86,12 @@ var wolfIcon = L.icon({
     popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
 });
 
+// declare markerPlayer as a global variable
+var markerPlayer;
+
 // plaats testspelers (wolves) op de kaart
-var markerWolfA = L.marker([52.519746, 4.683202], {icon: wolfIcon}).addTo(map);
-var markerWolfB = L.marker([52.518275, 4.685414], {icon: wolfIcon}).addTo(map);
+var markerWolfA = L.marker([52.519746, 4.683202], {icon: wolfIcon});
+var markerWolfB = L.marker([52.518275, 4.685414], {icon: wolfIcon});
 
 // stel coordinaten in voor de statische 'Prey'
 var markerPrey = L.marker([52.516446, 4.686901]);
