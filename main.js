@@ -5,11 +5,13 @@ var markerPlayer;
 function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    const accuracy = position.coords.accuracy;
+    //const accuracy = position.coords.accuracy;
     
+    console.log(latitude)
+
     //verwijder de marker indien deze al bestaat en plaats een marker voor de huidige positie
     if (markerPlayer) {
-        map_init.removeLayer(markerPlayer)
+        map.removeLayer(markerPlayer)
     }
     markerPlayer = L.marker([latitude, longitude]).addTo(map);
     
@@ -47,14 +49,14 @@ function error() {
 // opties voor ophalen locatie
 const options = {
     enableHighAccuracy: true,
-    maximumAge: 5000,
-    timeout: 20000,
+    maximumAge: 1000,
+    timeout: 5000,
 };
 
 // initialize the map and set its view to our chosen geographical coordinates and a zoom level:
 var map = L.map('map').setView([52.527684, 4.639624], 7);
 
-// er geldt een use policy voor deze tiles, niet zeker of dit gebruikt kan worden in de game?
+// er geldt een usage policy voor deze tiles, niet zeker of dit gebruikt kan worden in de game?
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 16,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -80,7 +82,6 @@ var wolfIcon = L.icon({
 
 // plaats testspelers (wolves) op de kaart
 var markerWolfA = L.marker([52.519746, 4.683202], {icon: wolfIcon}).addTo(map);
-
 var markerWolfB = L.marker([52.518275, 4.685414], {icon: wolfIcon}).addTo(map);
 
 // stel coordinaten in voor de statische 'Prey'
