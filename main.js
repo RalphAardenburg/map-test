@@ -32,11 +32,11 @@ function success(position) {
     let distanceWolfBPrey = Math.round(map.distance(markerWolfB.getLatLng(),markerPrey.getLatLng()));
 
     //geef de speler een tekstballon met info mbt afstand tot de Prey
-    markerPlayer.bindPopup(distancePlayerPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
+    markerPlayer.bindPopup(distancePlayerPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPan: false}).openPopup();
 
     //geef de medespelers tekstballonnen met info mbt afstand tot de speler en de Prey
-    markerWolfA.bindPopup("WolfA " + distancePlayerWolfA + " m and " + distanceWolfAPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
-    markerWolfB.bindPopup("WolfB " + distancePlayerWolfB + " m and " + distanceWolfBPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
+    markerWolfA.bindPopup("WolfA " + distancePlayerWolfA + " m and " + distanceWolfAPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPan: false}).openPopup();
+    markerWolfB.bindPopup("WolfB " + distancePlayerWolfB + " m and " + distanceWolfBPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPan: false}).openPopup();
 
     //presenteer de marker van de prey wanneer de speler < 20m afstand is
     if (distancePlayerPrey <= 20) {
