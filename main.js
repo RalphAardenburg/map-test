@@ -66,7 +66,10 @@ var map = L.map('map').setView([52.527684, 4.639624], 7);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 16,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);  
+}).addTo(map);
+
+// voeg een schaal toe aan de kaart
+L.control.scale().addTo(map);
 
 // haal eenmalig gps data op, dit wordt gebruikt om eenmalig de kaart te centreren
 if (!navigator.geolocation) {
@@ -96,6 +99,25 @@ var markerWolfB = L.marker([52.518275, 4.685414], {icon: wolfIcon});
 // stel coordinaten in voor de statische 'Prey'
 var markerPrey = L.marker([52.516446, 4.686901]);
 
-//volg geolocatie
+//functie voor circel plaatsen voor ingeschatte positie Prey
+let circle = null;
+
+function toggleCircle(e) {
+  if (circle) {
+    map.removeLayer(circle);
+    circle = null;
+  } else {
+    circle = L.circle(e.latlng, {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: 100
+    }).addTo(map);
+  }
+}
+
+map.on('click', toggleCircle);
+
+//volg geolocatie speler
 navigator.geolocation.watchPosition(success, error, options);
 
