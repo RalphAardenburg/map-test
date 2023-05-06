@@ -93,11 +93,11 @@ var wolfIcon = L.icon({
 var markerPlayer;
 
 // plaats testspelers (wolves) op de kaart
-var markerWolfA = L.marker([52.519746, 4.683202], {icon: wolfIcon});
+var markerWolfA = L.marker([52.518208, 4.675491], {icon: wolfIcon});
 var markerWolfB = L.marker([52.518275, 4.685414], {icon: wolfIcon});
 
 // stel coordinaten in voor de statische 'Prey'
-var markerPrey = L.marker([52.516446, 4.686901]);
+var markerPrey = L.marker([52.512536, 4.679780]);
 
 //functie voor circel plaatsen voor ingeschatte positie Prey
 let circle = null;
