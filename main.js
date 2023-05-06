@@ -32,7 +32,7 @@ function success(position) {
     let distanceWolfBPrey = Math.round(map.distance(markerWolfB.getLatLng(),markerPrey.getLatLng()));
 
     //geef de speler een tekstballon met info mbt afstand tot de Prey
-    markerPlayer.bindPopup(distancePlayerPrey + " m to Prey", {closeOnClick: false, autoClose: false}).openPopup();
+    markerPlayer.bindPopup(distancePlayerPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
 
     //geef de medespelers tekstballonnen met info mbt afstand tot de speler en de Prey
     markerWolfA.bindPopup("WolfA " + distancePlayerWolfA + " m and " + distanceWolfAPrey + " m to Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
@@ -44,7 +44,7 @@ function success(position) {
         markerPrey.bindPopup("You have found the Prey", {closeOnClick: false, autoClose: false, autoPane: false}).openPopup();
     }
     //alleen voor testen
-    //console.log(distancePlayerPrey, distancePlayerWolfA, distancePlayerWolfB)
+    console.log(distancePlayerPrey, distancePlayerWolfA, distancePlayerWolfB)
 }
 
 // functie voor wanneer coordinaten niet kunnen worden opgehaald
